@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="mr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्मार्ट शेती सल्ला प्रणाली (Smart Farming Advisory System)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        agro: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            250: '#86efac',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-agro-500 selection:text-white">
+
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-18 items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-agro-600 text-white p-2.5 rounded-2xl shadow-md">
+                        <i class="fa-solid fa-seedling text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg text-agro-900 block leading-tight">स्मार्ट कृषी सल्ला</span>
+                        <span class="text-xs text-slate-500 font-medium">कॉलेज प्रेझेंटेशन मॉडेल (AI Powered)</span>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#home" class="text-slate-600 hover:text-agro-700 font-medium transition text-sm">मुखपृष्ठ</a>
+                    <a href="#features" class="text-slate-600 hover:text-agro-700 font-medium transition text-sm">अ‍ॅप वैशिष्ट्ये</a>
+                    <a href="#simulator" class="text-slate-600 hover:text-agro-700 font-medium transition text-sm">लाईव्ह डॅशबोर्ड</a>
+                    <a href="#about" class="text-slate-600 hover:text-agro-700 font-medium transition text-sm">प्रकल्पाबद्दल</a>
+                    <a href="#simulator" class="bg-agro-600 hover:bg-agro-700 text-white px-5 py-2.5 rounded-xl font-medium shadow-sm transition text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-play"></i> वापरून पहा
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="relative bg-gradient-to-br from-agro-900 via-agro-800 to-agro-900 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:18px_18px]"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10 space-y-6">
+            <span class="bg-agro-800/90 border border-agro-600/50 text-agro-200 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full inline-flex items-center gap-2 shadow-inner">
+                <i class="fa-solid fa-robot text-agro-400"></i> कृत्रिम बुद्धिमत्ता (AI) आधारित शेती सल्ला प्रणाली
+            </span>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                शेतकऱ्यांसाठी स्मार्ट कृषी सल्ला व मार्गदर्शन प्रणाली
+            </h1>
+            <p class="text-base sm:text-lg text-agro-100 max-w-2xl mx-auto font-light leading-relaxed">
+                हवामान अंदाज, पिकांचे रोग निदान, मातीचे आरोग्य आणि बाजार भावाचा अचूक अंदाज एकाच क्लिकवर मिळवा. उत्पादन वाढवा आणि खर्च कमी करा.
+            </p>
+            <div class="pt-4 flex flex-wrap justify-center gap-4">
+                <a href="#simulator" class="bg-white text-agro-900 font-semibold px-8 py-3.5 rounded-xl shadow-lg hover:bg-agro-50 transition transform hover:-translate-y-0.5 inline-flex items-center gap-2 text-sm sm:text-base">
+                    <i class="fa-solid fa-wand-magic-sparkles text-agro-600"></i> लाईव्ह सल्ला मिळवा
+                </a>
+                <a href="#features" class="bg-agro-800/80 border border-agro-600 text-white font-medium px-6 py-3.5 rounded-xl hover:bg-agro-700 transition text-sm sm:text-base">
+                    वैशिष्ट्ये पहा
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 w-full">
+        
+        <section id="simulator" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+                <span class="text-agro-600 font-bold uppercase text-xs tracking-wider">अ‍ॅप डॅशबोर्ड</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">पाच प्रगत शेती साधने (Interactive Tools)</h2>
+                <p class="text-slate-600 text-sm">खालील टॅब निवडून वेगवेगळ्या स्मार्ट शेती सेवांची चाचणी घ्या.</p>
+            </div>
+
+            <!-- Dashboard Tabs Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
+                <button onclick="switchTab('tab1', this)" class="tab-btn active bg-agro-600 text-white px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm shadow-sm transition flex items-center gap-2">
+                    <i class="fa-solid fa-droplet"></i> हवामान व सिंचन
+                </button>
+                <button onclick="switchTab('tab2', this)" class="tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm shadow-sm hover:bg-slate-50 transition flex items-center gap-2">
+                    <i class="fa-solid fa-bug-slash"></i> पीक रोग निदान (AI)
+                </button>
+                <button onclick="switchTab('tab3', this)" class="tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm shadow-sm hover:bg-slate-50 transition flex items-center gap-2">
+                    <i class="fa-solid fa-flask"></i> खत व माती कॅल्क्युलेटर
+                </button>
+                <button onclick="switchTab('tab4', this)" class="tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm shadow-sm hover:bg-slate-50 transition flex items-center gap-2">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> बाजार भाव अंदाज
+                </button>
+                <button onclick="switchTab('tab5', this)" class="tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm shadow-sm hover:bg-slate-50 transition flex items-center gap-2">
+                    <i class="fa-solid fa-microphone"></i> व्हॉईस असिस्टंट
+                </button>
+            </div>
+
+            <!-- Tab Content Wrapper -->
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden p-6 sm:p-8">
+
+                <!-- TAB 1: Smart Irrigation & Weather -->
+                <div id="tab1" class="tab-content active space-y-6">
+                    <div class="border-b border-slate-100 pb-4 flex items-center justify-between flex-wrap gap-2">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-cloud-sun-rain text-agro-600"></i> हवामान आणि सिंचन सल्लागार (Smart Irrigation Advisor)
+                            </h3>
+                            <p class="text-xs text-slate-500">तापमान आणि मातीतील ओलावा तपासून पिकाला पाण्याचे प्रमाण ठरवा.</p>
+                        </div>
+                        <span class="bg-agro-100 text-agro-800 text-xs px-3 py-1 rounded-full font-semibold">टूल १</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">पीकाची निवड करा</label>
+                                <select id="t1Crop" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-agro-500">
+                                    <option value="तांदूळ (Paddy)">तांदूळ (Paddy)</option>
+                                    <option value="गहू (Wheat)">गहू (Wheat)</option>
+                                    <option value="कापूस (Cotton)">कापूस (Cotton)</option>
+                                    <option value="सोयाबीन (Soybean)">सोयाबीन (Soybean)</option>
+                                    <option value="उसाचे पीक (Sugarcane)">उसाचे पीक (Sugarcane)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">हवामानाची स्थिती</label>
+                                <select id="t1Weather" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-agro-500">
+                                    <option value="उष्ण व ऊन (Sunny)">उष्ण व कडक ऊन</option>
+                                    <option value="पाऊस पडत आहे (Rainy)">पाऊस / मान्सून</option>
+                                    <option value="दमट हवामान (Humid)">दमट हवामान</option>
+                                    <option value="कोरडे व वारे (Dry)">कोरडे हवामान</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">मातीतील ओलावा (%)</label>
+                                <input type="range" id="t1Moisture" min="10" max="90" value="40" class="w-full accent-agro-600" oninput="document.getElementById('moistureVal').innerText = this.value + '%'">
+                                <span class="text-xs text-slate-500 font-medium">सध्याचा ओलावा: <strong id="moistureVal" class="text-agro-700">40%</strong></span>
+                            </div>
+                            <button onclick="calcIrrigation()" class="w-full bg-agro-600 hover:bg-agro-700 text-white font-medium py-3 rounded-xl shadow transition text-sm">
+                                सिंचन सल्ला तपासा
+                            </button>
+                        </div>
+
+                        <div class="bg-agro-50 border border-agro-200 rounded-2xl p-6 space-y-4">
+                            <div class="flex items-center gap-3 text-agro-900 font-bold text-base">
+                                <i class="fa-solid fa-circle-info text-agro-600 text-xl"></i> सिंचन आणि पाणी व्यवस्थापन अहवाल
+                            </div>
+                            <p id="t1Result" class="text-slate-700 text-sm leading-relaxed">
+                                डावीकडील माहिती भरून 'सिंचन सल्ला तपासा' बटण दाबा. येथे पाण्याचे नियोजन दिसेल.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: AI Crop Disease Detector -->
+                <div id="tab2" class="tab-content space-y-6">
+                    <div class="border-b border-slate-100 pb-4 flex items-center justify-between flex-wrap gap-2">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-microchip text-agro-600"></i> पीक रोग आणि उपाय तपासणी साधन (AI Disease Diagnosis)
+                            </h3>
+                            <p class="text-xs text-slate-500">पिकाच्या पानांवरील किंवा मुळांवरील लक्षणांवरून रोग ओळखा.</p>
+                        </div>
+                        <span class="bg-agro-100 text-agro-800 text-xs px-3 py-1 rounded-full font-semibold">टूल २</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">पिकाचे नाव</label>
+                                <select id="t2Crop" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-agro-500">
+                                    <option value="टोमॅटो (Tomato)">टोमॅटो (Tomato)</option>
+                                    <option value="कापूस (Cotton)">कापूस (Cotton)</option>
+                                    <option value="सोयाबीन (Soybean)">सोयाबीन (Soybean)</option>
+                                    <option value="कांदा (Onion)">कांदा (Onion)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">दिसणारी लक्षणे</label>
+                                <select id="t2Symptom" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-agro-500">
+                                    <option value="yellow_leaves">पानांवर पिवळे डाग पडणे</option>
+                                    <option value="black_spots">पानांवर काळे ठिपके व बुरशी</option>
+                                    <option value="wilting">झाड कोमेजणे / मान टाकणे</option>
+                                    <option value="borer_holes">फळांवर किंवा खोडात छिद्रे</option>
+                                </select>
+                            </div>
+                            <button onclick="detectDisease()" class="w-full bg-agro-600 hover:bg-agro-700 text-white font-medium py-3 rounded-xl shadow transition text-sm">
+                                रोगाचे निदान करा व उपाय पहा
+                            </button>
+                        </div>
+
+                        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 space-y-4">
+                            <div class="flex items-center gap-3 text-amber-900 font-bold text-base">
+                                <i class="fa-solid fa-shield-halved text-amber-600 text-xl"></i> AI निदान व औषधोपचार शिफारस
+                            </div>
+                            <div id="t2Result" class="text-slate-700 text-sm space-y-2">
+                                <p>निवडलेल्या लक्षणांनुसार योग्य कीटकनाशक किंवा सेंद्रिय उपायांची माहिती येथे मिळेल.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Fertilizer & NPK Calculator -->
+                <div id="tab3" class="tab-content space-y-6">
+                    <div class="border-b border-slate-100 pb-4 flex items-center justify-between flex-wrap gap-2">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-flask text-agro-600"></i> खत आणि माती आरोग्य कॅल्क्युलेटर (Fertilizer NPK Calculator)
+                            </h3>
+                            <p class="text-xs text-slate-500">मातीचा प्रकार आणि पिकाच्या वाढीच्या टप्प्यानुसार खताचे योग्य प्रमाण.</p>
+                        </div>
+                        <span class="bg-agro-100 text-agro-800 text-xs px-3 py-1 rounded-full font-semibold">टूल ३</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">मातीचा प्रकार</label>
+                                <select id="t3Soil" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-agro-500">
+                                    <option value="कापूस माती / काळी माती (Black Soil)">काळी माती (Black Soil - Rich)</option>
+                                    <option value="तांबडी माती (Red Soil)">तांबडी माती (Red Soil)</option>
+                                    <option value="गाळाची माती (Alluvial / Loamy)">गाळाची / मुरτ माती (Loamy)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">जमिनीचे क्षेत्रफळ (एकर)</label>
+                                <input type="number" id="t3Acres" value="1" min="0.5" max="50" step="0.5" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm">
+                            </div>
+                            <button onclick="calcFertilizer()" class="w-full bg-agro-600 hover:bg-agro-700 text-white font-medium py-3 rounded-xl shadow transition text-sm">
+                                एनपीके (NPK) खत प्रमाण काढा
+                            </button>
+                        </div>
+
+                        <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 space-y-4">
+                            <div class="flex items-center gap-3 text-indigo-900 font-bold text-base">
+                                <i class="fa-solid fa-calculator text-indigo-600 text-xl"></i> शिफारस केलेले खत प्रमाण
+                            </div>
+                            <div id="t3Result" class="text-slate-700 text-sm space-y-2">
+                                <p>एकर क्षेत्रफळ आणि मातीनुसार युरिया, डीएपी आणि पालाशचे अचूक प्रमाण येथे दिसेल.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: Mandi Market Rates -->
+                <div id="tab4" class="tab-content space-y-6">
+                    <div class="border-b border-slate-100 pb-4 flex items-center justify-between flex-wrap gap-2">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-indian-rupee-sign text-agro-600"></i> बाजार भाव आणि विक्री सल्ला (Mandi Market Rates)
+                            </h3>
+                            <p class="text-xs text-slate-500">प्रमुख शेती मालाचे सध्याचे बाजार भाव आणि विक्रीबाबत तज्ज्ञांचा सल्ला.</p>
+                        </div>
+                        <span class="bg-agro-100 text-agro-800 text-xs px-3 py-1 rounded-full font-semibold">टूल ४</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
+                                    <th class="p-3">पिक / शेती माल</th>
+                                    <th class="p-3">सरासरी बाजार भाव (प्रति क्विंटल)</th>
+                                    <th class="p-3">बाजाराचा कल</th>
+                                    <th class="p-3">तज्ज्ञांचा सल्ला</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-3 font-medium">सोयाबीन (Soybean)</td>
+                                    <td class="p-3 font-bold text-agro-700">₹ 4,650 - ₹ 4,850</td>
+                                    <td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full text-xs font-semibold">वाढ होण्याची शक्यता</span></td>
+                                    <td class="p-3 text-slate-600">काही दिवस थांबून विक्री करणे फायदेशीर ठरेल.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">कापूस (Cotton)</td>
+                                    <td class="p-3 font-bold text-agro-700">₹ 7,200 - ₹ 7,500</td>
+                                    <td class="p-3"><span class="bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full text-xs font-semibold">स्थिर बाजार</span></td>
+                                    <td class="p-3 text-slate-600">सध्याच्या दरात विक्री करू शकता.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">टोमॅटो (Tomato)</td>
+                                    <td class="p-3 font-bold text-agro-700">₹ 2,200 - ₹ 2,800</td>
+                                    <td class="p-3"><span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full text-xs font-semibold">चढ-उतार</span></td>
+                                    <td class="p-3 text-slate-600">स्थानिक बाजारात त्वरित विक्री करा.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">गहू (Wheat)</td>
+                                    <td class="p-3 font-bold text-agro-700">₹ 2,500 - ₹ 2,750</td>
+                                    <td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full text-xs font-semibold">तेजी</span></td>
+                                    <td class="p-3 text-slate-600">चांगल्या दरासाठी साठवणूक करू शकता.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 5: Voice Assistant Simulation -->
+                <div id="tab5" class="tab-content space-y-6">
+                    <div class="border-b border-slate-100 pb-4 flex items-center justify-between flex-wrap gap-2">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-microphone text-agro-600"></i> आवाज आधारित शेती सल्ला (Voice Advisory Simulation)
+                            </h3>
+                            <p class="text-xs text-slate-500">मराठी भाषेत बोलून किंवा विचारून तात्काळ शेती सल्ला मिळवा.</p>
+                        </div>
+                        <span class="bg-agro-100 text-agro-800 text-xs px-3 py-1 rounded-full font-semibold">टूल ५</span>
+                    </div>
+
+                    <div class="max-w-xl mx-auto text-center space-y-6 py-6">
+                        <div class="w-20 h-20 bg-agro-100 text-agro-600 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner animate-pulse">
+                            <i class="fa-solid fa-microphone-lines"></i>
+                        </div>
+                        <p class="text-sm text-slate-600">मायक्रोफोन बटण दाबा आणि विचारा: <em>"या आठवड्यात पिकाला किती पाणी द्यावे?"</em> किंवा <em>"सोयाबीनचे बाजार भाव काय आहेत?"</em></p>
+                        
+                        <div class="flex justify-center gap-4">
+                            <button onclick="simulateVoice()" class="bg-agro-600 hover:bg-agro-700 text-white px-6 py-3 rounded-xl font-medium text-sm shadow transition flex items-center gap-2">
+                                <i class="fa-solid fa-play"></i> आवाज ऐकवा (Simulate Voice Input)
+                            </button>
+                        </div>
+
+                        <div id="voiceOutput" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-xl text-left text-sm text-slate-700 space-y-2">
+                            <p class="font-bold text-agro-800"><i class="fa-solid fa-volume-high"></i> AI उत्तर (मराठीत):</p>
+                            <p id="voiceText">"सध्याच्या हवामानानुसार आपल्या शेतात ओलावा कमी आहे. दर ३ दिवसांनी हलके पाणी द्यावे."</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="features" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-agro-600 font-bold tracking-wide uppercase text-xs">प्रकल्पाची वैशिष्ट्ये</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">स्मार्ट शेती प्रणालीची प्रमुख वैशिष्ट्ये</h2>
+                <p class="text-slate-600 text-sm">पारंपारिक शेतीला आधुनिक तंत्रज्ञानाशी जोडणारे प्रभावी साधन.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-agro-50 text-agro-600 flex items-center justify-center text-xl font-bold shadow-inner">
+                        <i class="fa-solid fa-cloud-sun"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900">रिअल-टाइम हवामान अंदाज</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">स्थानिक हवामानाची अचूक माहिती देऊन अवकाळी पाऊस किंवा उष्णतेच्या लाटेपासून पिकांचे संरक्षण करतो.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold shadow-inner">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900">पाणी व सिंचन व्यवस्थापन</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">मातीतील ओलावा तपासून पिकाला आवश्यक तेवढेच पाणी सोडण्याचे नियोजन करतो, ज्यामुळे पाण्याची बचत होते.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold shadow-inner">
+                        <i class="fa-solid fa-bug"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900">कीटक व रोग नियंत्रण</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">पिकांवरील रोगांचे निदान करून योग्य औषधे व सेंद्रिय उपायांची माहिती त्वरित उपलब्ध करून देतो.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold shadow-inner">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900">बाजार भाव व विक्री मार्गदर्शन</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">शेतकऱ्यांना शेतीमाल कधी व कुठे विकावा याबाबत बाजाराच्या कलानुसार अचूक सल्ला देतो.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold shadow-inner">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900">पूर्णपणे मराठी भाषा</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">ग्रामीण भागातील प्रत्येक शेतकऱ्याला सहज समजेल अशी सोपी आणि स्पष्ट मराठी भाषा.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl font-bold shadow-inner">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900">मोबाईल फ्रेंडली डिझाईन</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">कोणत्याही स्मार्टफोनवर किंवा टॅबलेटवर अत्यंत जलद आणि सुलभतेने चालणारे अ‍ॅप.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="scroll-mt-24 bg-white rounded-2xl shadow-sm border border-slate-100 p-8 sm:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="bg-agro-50 text-agro-700 text-xs font-semibold px-3 py-1 rounded-full border border-agro-200">कॉलेज प्रोजेक्ट माहिती</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">समस्या आणि आमचे स्मार्ट समाधान</h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        पारंपारिक शेतीत योग्य माहितीच्या अभावी शेतकऱ्यांना बऱ्याचदा आर्थिक नुकसान सहन करावे लागते. हवामानाचा लहरीपणा, पाण्याचा अपव्यय आणि खतांचा चुकीचा वापर या प्रमुख समस्या आहेत.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <div class="text-agro-600 mt-1"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-sm">उत्पादनात ३०% पर्यंत वाढ</h4>
+                                <p class="text-slate-500 text-xs">योग्य वेळेवर खत आणि पाणी मिळाल्यामुळे पिकांची जोमाने वाढ होते.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="text-agro-600 mt-1"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-sm">खर्चात बचत</h4>
+                                <p class="text-slate-500 text-xs">रासायनिक खतांचा अतिरिक्त वापर टळल्यामुळे लागवड खर्च कमी होतो.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-agro-50 to-slate-100 p-8 rounded-2xl border border-agro-100 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-agro-600 text-white p-3 rounded-xl shadow">
+                            <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">प्रेझेंटेशनसाठी तयार मॉडेल</h3>
+                            <p class="text-xs text-slate-500">डिपार्टमेंटल सेमिनार व प्रोजेक्ट मुल्यांकनासाठी उपयुक्त</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                        <span class="text-xs font-semibold text-agro-700 uppercase tracking-wider block">वापरलेले तंत्रज्ञान (Tech Stack)</span>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-md font-medium">HTML5 & Tailwind CSS</span>
+                            <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-md font-medium">Vanilla JavaScript</span>
+                            <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-md font-medium">Interactive Dashboard Tabs</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 italic">"शेतकरी हा जगाचा पोशिंदा आहे, त्याला तंत्रज्ञानाची जोड देऊन सक्षम बनवणे आमचे ध्येय आहे."</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <p class="font-bold text-slate-800 text-sm">स्मार्ट शेती सल्ला प्रणाली (Smart Farming Advisory System)</p>
+                <p class="text-xs text-slate-500">कॉलेज फायनल इयर / प्रोजेक्ट प्रेझेंटेशन</p>
+            </div>
+            <p class="text-xs text-slate-400">&copy; 2026 स्मार्ट कृषी प्रोजेक्ट टीम. सर्व हक्क सुरक्षित.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId, btnElement) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Remove active style from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-agro-600', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            
+            // Highlight active button
+            btnElement.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            btnElement.classList.add('bg-agro-600', 'text-white');
+        }
+
+        // Tool 1: Irrigation Calculator
+        function calcIrrigation() {
+            const crop = document.getElementById('t1Crop').value;
+            const weather = document.getElementById('t1Weather').value;
+            const moisture = document.getElementById('t1Moisture').value;
+
+            let advice = `<strong>निवडलेले पीक:</strong> ${crop}<br>`;
+            advice += `<strong>हवामान स्थिती:</strong> ${weather}<br>`;
+            advice += `<strong>मातीतील ओलावा:</strong> ${moisture}%<br><br>`;
+
+            if (moisture < 30) {
+                advice += `<span class="text-red-600 font-bold"><i class="fa-solid fa-triangle-exclamation"></i> मातीत ओलावा खूप कमी आहे!</span> तातडीने पिकाला पाणी देणे आवश्यक आहे.`;
+            } else if (moisture > 70) {
+                advice += `<span class="text-emerald-700 font-bold"><i class="fa-solid fa-circle-check"></i> मातीत पुरेसा ओलावा आहे.</span> सध्या पाणी देण्याची गरज नाही.`;
+            } else {
+                advice += `<span class="text-amber-600 font-bold"><i class="fa-solid fa-circle-info"></i> मध्यम ओलावा.</span> हवामानाचा अंदाज घेऊन पुढील २ दिवसांत हलके पाणी द्यावे.`;
+            }
+
+            document.getElementById('t1Result').innerHTML = advice;
+        }
+
+        // Tool 2: Disease Detector
+        function detectDisease() {
+            const crop = document.getElementById('t2Crop').value;
+            const symptom = document.getElementById('t2Symptom').value;
+
+            let diagnosis = `<strong>पीक:</strong> ${crop}<br>`;
+            let remedy = '';
+
+            if (symptom === 'yellow_leaves') {
+                remedy = `<strong>निदान:</strong> नत्राची कमतरता किंवा पिवळा मोझॅक व्हायरस.<br><strong>उपाय:</strong> युरियाचे खत द्या किंवा निमयुक्त कीटकनाशकांची फवारणी करा.`;
+            } else if (symptom === 'black_spots') {
+                remedy = `<strong>निदान:</strong> बुरशीजन्य संसर्ग (Fungal Blight).<br><strong>उपाय:</strong> कॉपर ऑक्सिक्लोराईड किंवा मॅनकोझेब बुरशीनाशकाची फवारणी करावी.`;
+            } else if (symptom === 'wilting') {
+                remedy = `<strong>निदान:</strong> मूळ कुजणे (Root Rot) किंवा हुमणी प्रादुर्भाव.<br><strong>उपाय:</strong> ट्रायकोडर्मा पावडर शेणखोतात मिसळून जमिनीत सोडावी.`;
+            } else {
+                remedy = `<strong>निदान:</strong> अळी किंवा बोररचा प्रादुर्भाव.<br><strong>उपाय:</strong> क्लोरपायरीफॉस किंवा इमामेक्टिन बेन्झायलेटची फवारणी करावी.`;
+            }
+
+            document.getElementById('t2Result').innerHTML = diagnosis + '<br>' + remedy;
+        }
+
+        // Tool 3: Fertilizer Calculator
+        function calcFertilizer() {
+            const soil = document.getElementById('t3Soil').value;
+            const acres = parseFloat(document.getElementById('t3Acres').value) || 1;
+
+            let urea = (45 * acres).toFixed(1);
+            let dap = (25 * acres).toFixed(1);
+            let potash = (20 * acres).toFixed(1);
+
+            let resultHTML = `<strong>मातीचा प्रकार:</strong> ${soil}<br>`;
+            resultHTML += `<strong>क्षेत्रफळ:</strong> ${acres} एकर<br><br>`;
+            resultHTML += `<ul class="list-disc list-inside space-y-1 font-medium text-slate-800">`;
+            resultHTML += `<li>युरिया (Urea): <strong>${urea} किलो</strong></li>`;
+            resultHTML += `<li>डीएपी (DAP): <strong>${dap} किलो</strong></li>`;
+            resultHTML += `<li>मुरिएट ऑफ पोटॅश (MOP): <strong>${potash} किलो</strong></li>`;
+            resultHTML += `</ul>`;
+            resultHTML += `<p class="text-xs text-slate-500 mt-2">*टीप: हे प्रमाण प्राथमिक मार्गदर्शक असून माती परिक्षणाचे अहवालानुसार बदलू शकते.</p>`;
+
+            document.getElementById('t3Result').innerHTML = resultHTML;
+        }
+
+        // Tool 5: Voice Assistant Simulation
+        function simulateVoice() {
+            const outputBox = document.getElementById('voiceOutput');
+            const textEl = document.getElementById('voiceText');
+            
+            outputBox.classList.remove('hidden');
+            textEl.innerText = "🎤 ऐकत आहे... (तुमचा प्रश्न: 'सध्या सोयाबीनसाठी योग्य फवारणी कोणती?')\n\n💬 AI उत्तर: सोयाबीनवर अळीच्या नियंत्रणासाठी इमामेक्टिन बेन्झायलेटची फवारणी करा आणि पाण्याचा निचरा व्यवस्थित ठेवा.";
+        }
+
+        // Run initial calculations on load
+        window.onload = function() {
+            calcIrrigation();
+            calcFertilizer();
+        };
+    </script>
+</body>
+</html>
